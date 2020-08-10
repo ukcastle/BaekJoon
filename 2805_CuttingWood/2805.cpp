@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
 #define LLI long long int 
@@ -21,7 +20,7 @@ int main() {
 	LLI end{ 1000000000 };
 	LLI middle{};
 
-	while (front <= end) {
+	for(int i=0;i<35;i++) {
 		LLI sum{};
 		middle = (front + end) / 2;
 		for (LLI nowWood : woodList) {
