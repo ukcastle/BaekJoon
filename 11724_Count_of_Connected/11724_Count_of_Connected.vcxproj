@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{6A7D6C51-6A0E-44FB-B822-B596A0B1C915}</ProjectGuid>
-    <RootNamespace>My1065HanSu</RootNamespace>
+    <ProjectGuid>{339E7274-0152-4F88-9FC7-7A01CFB1CFA2}</ProjectGuid>
+    <RootNamespace>My11724CountofConnected</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -123,7 +123,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HanSu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
