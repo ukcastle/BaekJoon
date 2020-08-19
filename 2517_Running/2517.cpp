@@ -7,7 +7,7 @@ int main() {
 	int num{};
 	cin >> num;
 
-	vector<pair<int,int>> numbers{};
+	register vector<pair<int,int>> numbers{};
 	int temp{};
 	for (int i = 0; i < num; i++) {
 		cin >> temp;
