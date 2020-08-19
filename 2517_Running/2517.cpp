@@ -6,8 +6,6 @@ int main() {
 
 	int num{};
 	cin >> num;
-
-	
 	
 	vector<int> numbers{};
 	int temp{};
