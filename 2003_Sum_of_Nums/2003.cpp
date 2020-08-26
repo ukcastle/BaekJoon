@@ -12,11 +12,11 @@ int main() {
 	cin >> n >> target;
 	
 	register int num;
-	int searchIndex{};
 
 	cin >> nums[0];
 	if (nums[0] == target) { answer++; }
 
+	int searchIndex{};
 	for (int i = 1; i < n; i++) {
 		cin >> num;
 		nums[i] = nums[i-1] + num;
