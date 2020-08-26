@@ -3,6 +3,10 @@ using namespace std;
 
 int main() {
 
+		ios_base::sync_with_stdio(false);
+		cin.tie(nullptr);
+		cout.tie(nullptr);
+
 	int input{};
 	cin >> input;
 	//----------------입력값을 받는 단계
