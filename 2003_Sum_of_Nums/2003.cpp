@@ -1,14 +1,23 @@
 #include <iostream>
 using namespace std;
 
-
-
 int main() {
+	register int nums[10000];
+	
 	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	int n, target;
+	cin >> n >> target;
+	
+	for (int i = 0; i < n; i++) {
+		cin >> nums[i];
+	}
 
-	cout << "gd" << endl;
+	for (int i = 0; i < n; i++) {
+		cout << nums[i];
+	}
 
 	return 0;
 
