@@ -31,6 +31,10 @@ int main() {
 		}
 	}
 
+	for (int i = 0; i < n; i++) {
+		if (nums[i] == target) { cout << i + 1; return 0; }
+	}
+
 	cout << "0";
 
 	return 0;
