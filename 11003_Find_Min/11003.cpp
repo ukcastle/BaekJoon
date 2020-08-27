@@ -3,7 +3,7 @@
 using namespace std;
 
 int nums[5000000];
-//queue를 이용한 슬라이딩 윈도우 사용해라
+// 속도초과
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
