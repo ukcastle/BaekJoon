@@ -18,6 +18,7 @@ int main() {
 	maxNum[0][1] = minNum[0][1] = c;
 	maxNum[0][2] = minNum[0][2] = r;
 
+
 	for (int i = 1; i < n; i++) {
 		cin >> l >> c >> r;
 		maxNum[i][0] = max(maxNum[i - 1][0] + l, maxNum[i - 1][0] + c);
