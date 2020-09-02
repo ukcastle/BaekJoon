@@ -1,8 +1,9 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
-int maxNum[100000][3];
-int minNum[100000][3];
+int maxNum[3];
+int minNum[3];
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -14,25 +15,33 @@ int main() {
 
 	int l, c, r;
 	cin >> l >> c >> r;
-	maxNum[0][0] = minNum[0][0] = l;
-	maxNum[0][1] = minNum[0][1] = c;
-	maxNum[0][2] = minNum[0][2] = r;
+	maxNum[0] = minNum[0] = l;
+	maxNum[1] = minNum[1] = c;
+	maxNum[2] = minNum[2] = r;
 
 
 	for (int i = 1; i < n; i++) {
 		cin >> l >> c >> r;
-		maxNum[i][0] = max(maxNum[i - 1][0] + l, maxNum[i - 1][0] + c);
-		maxNum[i][1] = max(max(maxNum[i - 1][1] + l, maxNum[i - 1][1] + c), maxNum[i - 1][1] + r);
-		maxNum[i][2] = max(maxNum[i - 1][2] + c, maxNum[i - 1][2] + r);
-		
-		minNum[i][0] = min(minNum[i - 1][0] + l, minNum[i - 1][0] + c);
-		minNum[i][1] = min(min(minNum[i - 1][1] + l, minNum[i - 1][1] + c), minNum[i - 1][1] + r);
-		minNum[i][2] = min(minNum[i - 1][2] + c, minNum[i - 1][2] + r);
+		int tempL = max(l, c);
+		int tempC = max(tempL, r);
+		int tempR = max(c, r);
+
+		maxNum[0] += tempL;
+		maxNum[1] += tempC;
+		maxNum[2] += tempR;
+
+		tempL = min(l, c);
+		tempC = min(tempL, r);
+		tempR = min(c, r);
+
+		minNum[0] += tempL;
+		minNum[1] += tempC;
+		minNum[2] += tempR;
 	}
 
 
-	cout << max(max(maxNum[n - 1][0], maxNum[n - 1][1]), maxNum[n - 1][2])<<" ";
-	cout << min(min(minNum[n - 1][0], minNum[n - 1][1]), minNum[n - 1][2]);
+	cout << max(max(maxNum[0], maxNum[1]), maxNum[2])<<" ";
+	cout << min(min(minNum[0], minNum[1]), minNum[2]);
 	
 	return 0;
 }
