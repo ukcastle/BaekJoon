@@ -13,16 +13,17 @@ int main() {
 	cin >> n;
 
 	int l, c, r;
+	/*
 	cin >> l >> c >> r;
 	maxNum[0] = minNum[0] = l;
 	maxNum[1] = minNum[1] = c;
 	maxNum[2] = minNum[2] = r;
+	*/
 
-
-	for (int i = 1; i < n; i++) {
+	for (int i = 0; i < n; i++) {
 		cin >> l >> c >> r;
 		int tempL = max(l, c);
-		int tempC = max(tempL, r);
+		int tempC = max(max(l, c), r);
 		int tempR = max(c, r);
 
 		maxNum[0] += tempL;
@@ -30,7 +31,7 @@ int main() {
 		maxNum[2] += tempR;
 
 		tempL = min(l, c);
-		tempC = min(tempL, r);
+		tempC = min(min(l, c), r);
 		tempR = min(c, r);
 
 		minNum[0] += tempL;
