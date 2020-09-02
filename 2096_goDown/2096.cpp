@@ -4,6 +4,12 @@ using namespace std;
 int maxNum[3];
 int minNum[3];
 
+/*
+3
+1 0 0
+0 1 0
+0 0 1
+*/
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -14,7 +20,12 @@ int main() {
 
 	int l, c, r;
 	
-	for (int i = 0; i < n; i++) {
+	cin >> l >> c >> r;
+	maxNum[0] = minNum[0] = l;
+	maxNum[1] = minNum[1] = c;
+	maxNum[2] = minNum[2] = r;
+
+	for (int i = 1; i < n; i++) {
 		cin >> l >> c >> r;
 		int tempL = max(maxNum[0] + l, maxNum[0] + c);
 		int tempC = max(max(maxNum[1] + l, maxNum[1] + c), maxNum[1] + r);
