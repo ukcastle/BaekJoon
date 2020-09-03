@@ -4,12 +4,6 @@ using namespace std;
 int maxNum[3];
 int minNum[3];
 
-/*
-3
-1 0 0
-0 1 0
-0 0 1
-*/
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
