@@ -5,23 +5,34 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	long long int total, win;
+	long long total, win;
 
 	cin >> total >> win;
 
-	int targetRate = (double)win / (double)total * 100 + 1;
-	long long int firstWin = win;
-
-	if (targetRate >= 100) {
+	long long rate{ 100 * win / total };
+	if (rate >= 99) {
 		cout << "-1";
 		return 0;
 	}
+	
+	int low{ 0 }, high{ 1000000000 };
+	
+	int result{ -1 };
 
-	while (true) {
-		long long int rate = (double)win++ / (double)total++ * 100;
-		if (rate == targetRate) {
-			cout << win - firstWin;
-			return 0;
+	while (low <= high) {
+		int mid{ (low + high) / 2 };
+		long long tempRate{ 100 * (win + mid) / (total + mid) };
+
+		if (rate >= tempRate) {
+			result = mid + 1;
+			low = mid + 1;
+		}
+		else {
+			high = mid -1;
 		}
 	}
+
+	cout << result;
+
+	return 0;
 }
