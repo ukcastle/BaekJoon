@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -11,6 +12,7 @@ int main() {
 	cin >> n;
 
 	vector<vector<long long int>> numbers(n,vector<long long int>(4));
+	vector<long long int> a_b, c_d;
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < 4; j++) {
@@ -18,7 +20,17 @@ int main() {
 		}
 	}
 
-	
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			a_b.emplace_back(numbers[i][0] + numbers[j][1]);
+			c_d.emplace_back(numbers[i][2] + numbers[j][3]);
+		}
+	}
 
+	sort(c_d.begin(), c_d.end());
+
+
+
+	
 	return 0;
 }
