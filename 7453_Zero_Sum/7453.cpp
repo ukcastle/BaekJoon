@@ -18,7 +18,7 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		cin >> a[i] >> b[i] >> c[i] >> d[i];
 	}
-
+	
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			c_d.emplace_back(c[i]+d[j]);
@@ -26,13 +26,14 @@ int main() {
 	}
 
 	sort(c_d.begin(), c_d.end());
-
-	int answer{};
+	
+	long long answer{};
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			long long temp = ((long long)a[i] + (long long)b[j])*(-1);
-			auto lb = lower_bound(c_d.begin(), c_d.end(), temp);
-			auto ub = upper_bound(c_d.begin(), c_d.end(), temp);
+			auto lb = lower_bound(c_d.begin(), c_d.end(), temp) - c_d.begin();
+			auto ub = upper_bound(c_d.begin(), c_d.end(), temp) - c_d.begin();
+
 			answer += ub - lb;
 		}
 	}
