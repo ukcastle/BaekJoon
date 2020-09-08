@@ -11,8 +11,8 @@ int main() {
 	int n{};
 	cin >> n;
 
-	vector<vector<long long int>> numbers(n,vector<long long int>(4));
-	vector<long long int> a_b, c_d;
+	vector<vector<long>> numbers(n, vector <long> (4));
+	vector<long> a_b, c_d;
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < 4; j++) {
@@ -29,8 +29,15 @@ int main() {
 
 	sort(c_d.begin(), c_d.end());
 
+	int answer{};
 
+	for (auto i : a_b) {
+		auto lb = lower_bound(c_d.begin(), c_d.end(), -i);
+		auto ub = upper_bound(c_d.begin(), c_d.end(), -i);
+		answer += ub - lb;
+	}
 
+	cout << answer;
 	
 	return 0;
 }
