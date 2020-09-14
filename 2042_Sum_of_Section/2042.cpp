@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+// https://www.acmicpc.net/blog/view/9 세그먼트트리
+
 long long init(vector<long long>& num,vector<long long>& tree,int node,int start,int end) {
 	if (start == end) {
 		return tree[node] = num[start];
