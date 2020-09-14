@@ -1,28 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #pragma warning (disable:4996)
 
+int sum(int* array, int num) {
+	int result{};
+	for (int i = 0; i < num/sizeof(int); i++) {
+		result += array[i];
+	}
+	return result;
+}
+
 int main() {
-	char** name{};
+	int array[5] = { 10,30,40,30,20 };
+	printf("배열의 합은 %d 입니다.\n", sum(array, sizeof(array)));
 
-	name = (char**)malloc(sizeof(char*) * 5);
-	
-	for (int i = 0; i < 5; i++) {
-		name[i] = (char*)malloc(sizeof(char) * 100);		
-		//scanf("%s", temp);
-	}
-
-	strcpy(name[0],"tiger");
-	strcpy(name[1], "horse");
-	strcpy(name[2], "dog");
-	strcpy(name[3], "rabbit");
-	strcpy(name[4], "giraffe");
-
-
-	for (int i = 0; i < 4; i++) {
-		printf("%s, ", name[i]);
-	}
-
-	printf("%s", name[4]);
+	return 0;
 }
