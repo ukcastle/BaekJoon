@@ -14,6 +14,7 @@ long long init(vector<long long>& num,vector<long long>& tree,int node,int start
 	}
 }
 
+
 long long sum(vector<long long>& tree, int node, int start, int end, int left, int right) {
 	if (left > end || right < start) {
 		return 0;
