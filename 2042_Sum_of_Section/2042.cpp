@@ -2,7 +2,8 @@
 #include <vector>
 using namespace std;
 
-// https://www.acmicpc.net/blog/view/9 ¼¼±×¸ÕÆ®Æ®¸®
+
+// https://www.acmicpc.net/blog/view/9 ì„¸ê·¸ë¨¼íŠ¸íŠ¸ë¦¬
 
 long long init(vector<long long>& num,vector<long long>& tree,int node,int start,int end) {
 	if (start == end) {
@@ -57,13 +58,13 @@ int main() {
 
 	for (int i = 0; i < numOfChange + numOfSum; i++) {
 		cin >> type >> num1 >> num2;
-		if (type == 1) { //¾÷µ¥ÀÌÆ®
+		if (type == 1) { //ì—…ë°ì´íŠ¸
 			num1--;
 			long long diff = num2 - num[num1];
 			num[num1] = num2;
 			update(tree, 1, 0, n - 1, num1, diff);
 		}
-		else { //°ªÃâ·Â
+		else { //ê°’ì¶œë ¥
 			cout << sum(tree, 1, 0, n - 1, num1 - 1, num2 - 1) << endl;
 		}
 	}
