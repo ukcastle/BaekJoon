@@ -11,6 +11,7 @@ int sum(int* array, int num) {
 }
 
 int main() {
+
 	int array[5] = { 10,30,40,30,20 };
 	printf("배열의 합은 %d 입니다.\n", sum(array, sizeof(array)));
 
