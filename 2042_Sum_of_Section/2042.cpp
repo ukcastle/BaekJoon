@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 using namespace std;
 
 
@@ -20,16 +21,16 @@ long long sum(vector<long long>& tree, int node, int start, int end, int left, i
 	if (left > end || right < start) {
 		return 0;
 	}
-	if (left <= start || end <= right) {
+	if (left <= start && end <= right) {
 		return tree[node];
 	}
 	return sum(tree, node * 2, start, (start + end) / 2, left, right)
-		+ sum(tree, node * 2 + 1, (start + end) / 2 + 1, end, right, left);
+		+ sum(tree, node * 2 + 1, (start + end) / 2 + 1, end, left, right);
 }
 
 void update(vector<long long>& tree, int node, int start, int end, int index, long long diff) {
 	if (index<start || index>end) { return; }
-	tree[node] += diff;
+	tree[node] = tree[node] + diff;
 	if (start != end) {
 		update(tree, node * 2, start, (start + end) / 2, index, diff);
 		update(tree, node * 2 + 1, (start + end) / 2 + 1, end, index, diff);
@@ -42,7 +43,7 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int n{}, numOfChange{}, numOfSum{};
+	long long n{}, numOfChange{}, numOfSum{};
 	cin >> n >> numOfChange >> numOfSum;
 
 	vector<long long> num(n);
@@ -53,7 +54,7 @@ int main() {
 
 	vector<long long> tree(1 << (1 + (int)ceil(log2(n))));
 	
-	int type{}, num1{}, num2{};
+	long long type{}, num1{}, num2{};
 	init(num, tree, 1, 0, n - 1);
 
 	for (int i = 0; i < numOfChange + numOfSum; i++) {
