@@ -26,6 +26,7 @@ int main() {
 			continue;
 		}
 
+
 		char top = paren.top();
 		paren.pop();
 		if (a == ']') {
