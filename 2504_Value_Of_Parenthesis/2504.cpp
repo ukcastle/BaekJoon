@@ -7,6 +7,7 @@ bool visit[30];
 int main() {
 
 	
+
 	string input{};
 	cin >> input;
 
