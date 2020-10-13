@@ -11,6 +11,7 @@ int main() {
 	stack<char> paren{};
 	vector<pair<int, int>> v;
 
+	
 	long long temp{ 1 }, answer{ 0 };
 
 	for (char a : input) {
