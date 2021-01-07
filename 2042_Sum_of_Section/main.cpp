@@ -26,6 +26,7 @@ int main() {
 	p = a; 
 	q = b;
 
+
 	sum_global(); 
 	printf("After sum_global(): %d + %d = %d\n", p, q, r);
 
