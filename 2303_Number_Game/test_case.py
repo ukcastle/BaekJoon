@@ -7,5 +7,17 @@ class TestCase(list):
     self.append((q,a))
   
   def addTestCase(self):
-    self.appendTest(q=['3','7 5 5 4 9','1 1 1 1 1','2 3 3 2 10'], a=1)
-    self.appendTest(q=['2','1 1 1 1 1','1 1 1 1 1'], a=2)
+    q = """
+    3
+    7 5 5 4 9
+    1 1 1 1 1
+    2 3 3 2 10
+    """
+    self.appendTest(q=q, a=1)
+
+    q = """
+    2
+    1 1 1 1 1
+    1 1 1 1 1
+    """
+    self.appendTest(q=q, a=2)

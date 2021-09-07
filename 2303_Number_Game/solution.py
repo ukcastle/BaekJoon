@@ -36,7 +36,6 @@ def sumAll(num):
 	return ans
 
 def solution():
-	answerList = []
 	ret = 0
 	win = 0
 	for index in range(int(input())):
@@ -46,4 +45,4 @@ def solution():
 			ret = tempSum
 			win = index+1
 
-	return win
+	print(win)
