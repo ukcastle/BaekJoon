@@ -1,11 +1,10 @@
 from unittest.mock import patch
 import unittest
-
+from io import StringIO
 import argparse
 from importlib import import_module
 import os 
 import re
-import sys
 from datetime import datetime
 
 def getQuestionNumber():
@@ -26,8 +25,16 @@ class Test(unittest.TestCase):
 	
 	def testSolution(self):
 		print()
-		for input, answer in self.testList:
-			self._testSolution(input, answer)
+		for testInput, answer in self.testList:
+			if isinstance(testInput, str):
+				testInput = [x.strip() for x in testInput.strip().split("\n") if re.search("\S", x)]
+			else:
+				testInput = str(testInput)
+			if isinstance(answer, str):
+				answer = [x.strip() for x in answer.strip().split("\n") if re.search("\S", x)]
+			else:
+				answer = str(answer)
+			self._testSolution(testInput, answer)
 
 	def calcTime_decorator(realFunc):
 		def func(*args, **kwargs):
@@ -37,11 +44,15 @@ class Test(unittest.TestCase):
 		return func
 
 	@calcTime_decorator
-	def _testSolution(self ,userInput, rightAnswer):
-		with patch('builtins.input',side_effect=userInput):
-			ans = self.solution()
-		print(f"inputAns={ans}, rightAnswer={rightAnswer}", end="\t")
-		self.assertEqual(ans, rightAnswer)
+	def _testSolution(self ,testInput, rightAnswer):
+		with patch('sys.stdout', new = StringIO()) as fake_out:
+			with patch('builtins.input',side_effect=testInput):
+				self.solution()
+				printValue = fake_out.getvalue()
+				self.assertEqual(printValue, "\n".join(str(x) for x in rightAnswer)+"\n")
+		userAnswer = printValue.split("\n")[:-1]
+		print(f"inputAns={userAnswer}, rightAnswer={rightAnswer}", end="\t")
+
 			
 	def getFileName(self, questionNum):
 		fileName = [x for x in os.listdir() if re.findall(rf"^{questionNum}_",x)]
@@ -52,4 +63,9 @@ class Test(unittest.TestCase):
 if __name__ == '__main__':
 	
 	Test.QNUM, otherArg = getQuestionNumber()
-	unittest.main(argv=otherArg)
+
+	try:
+		unittest.main(argv=otherArg)
+	
+	finally:
+		print(f"https://www.acmicpc.net/problem/{Test.QNUM}")
