@@ -13,7 +13,10 @@ class TestCase(list):
     1 5 1
     2 2 -1
     """
-    self.appendTest(q=q,a="HaruHaru")
+    a = """
+    HaruHaru
+    """
+    self.appendTest(q=q,a=a)
 
     q = """
     3

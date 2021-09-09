@@ -32,5 +32,3 @@ def solution():
 		move(x, y, table,moveRange ,moveQueue)
 
 	print("Hing")	
-
-solution()
