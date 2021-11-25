@@ -2,6 +2,8 @@ import os
 import re
 from datetime import datetime
 import argparse
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
 def getFileName(questionNum):
 	folderName = [x for x in os.listdir() if re.findall(rf"^{questionNum}_",x)]
@@ -12,8 +14,7 @@ def getFileName(questionNum):
 	for name in folderName:
 		print(f"검색된 폴더 이름 : {name}")
 
-	raise "폴더 개수를 다시 확인해주세요 (검색 조건: 문제번호_~~~~~)"
-
+	raise "폴더를 다시 확인해주세요 (검색 조건: 문제번호_~~~~~)"
 
 def calcTime_decorator(realFunc):
 	def func(*args, **kwargs):
@@ -33,8 +34,13 @@ def refineString(strs):
 
 def getNamespaceAndArgs():
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--number', '-n', type=int, help='Input Question Number')
+	parser.add_argument('number', type=int, help='Input Question Number')
 	parser.add_argument('--test', help="If you want only print", action="store_true")
 	ns, args = parser.parse_known_args()
 
 	return ns, [parser.prog] + args
+
+def getTitleByNumber(number):
+	html = urlopen(f"https://www.acmicpc.net/problem/{number}")
+	bsObject = BeautifulSoup(html, "html.parser")
+	return bsObject.head.findAll("title")[0].__str__()[7:-8].replace("번: ","_")

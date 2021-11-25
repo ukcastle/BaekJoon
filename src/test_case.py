@@ -3,16 +3,16 @@ class TestCase(list):
   def __init__(self):
     self.addTestCase()
 
-  def appendTest(self,q,a):
-    self.append((q,a))
+  def appendTest(self,testInput,testOutput):
+    self.append((testInput,testOutput))
   
   def addTestCase(self):
-    q = """
-    
+    testInput = """
+    echo me
     """
-    a = """
-    
+    testOutput = """
+    echo me
     """
-    self.appendTest(q=q,a=a)
+    self.appendTest(testInput=testInput,testOutput=testOutput)
 
 
