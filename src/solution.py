@@ -1,8 +1,12 @@
-# import sys
-# input = sys.stdin.readline
-
 def solution():
 
-	inputString = input()
+	n = int(input())
 
-	print(inputString)
+	print()
+
+
+# import sys
+# input = sys.stdin.readline
+# solution()
+
+# --- 제출할 때 주석 풀기 ---
